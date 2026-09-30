@@ -1,6 +1,7 @@
 """Two commands: import the existing WeChat session, then start a run."""
 import argparse
 from pathlib import Path
+import sys
 
 from filelock import Timeout
 
@@ -31,4 +32,7 @@ def main():
 
 
 if __name__ == '__main__':
+    # Redirected Windows output otherwise uses a code page that may reject Chinese.
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
     main()
